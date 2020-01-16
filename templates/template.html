@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Desafio</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-sweetalert/1.0.1/sweetalert.min.js"></script>
+
+    <style>
+    thead, th, tbody, td {
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <script>
+        function confirmaExclusao(url) {
+            swal({
+                title: "Deseja realmente apagar o registro?",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonClass: "btn-danger",
+                cancelButtonText: "Não",
+                confirmButtonText: "Sim",
+                closeOnConfirm: true
+            },
+            function(){
+                window.location.href = url;
+            });
+    }
+        
+    </script>
+    <div class="container container-fuild">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{category}} alert-dismissible" role="alert" style="margin-top: 60px;">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                    {{message}}
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        
+        <div class="row">
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="{{ 'active' if active_page == '/empresas' else '' }}"><a href="/empresas"><span class="aria-hidden true glyphicon glyphicon-briefcase"></span> EMPRESAS</a></li>
+                        <li class="{{ 'active' if active_page == '/usuarios' else '' }}"><a href="/usuarios"><span class="aria-hidden glyphicon glyphicon-user"></span> USUÁRIOS</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="page-header">
+        <br>
+        <h1 style="text-align: center;"> {{ titulo }} </h1>
+        <div class="row">
+        <br>
+        {% block conteudo %}
+
+        {% endblock %}
+        </div>
+    </div>
+</body>

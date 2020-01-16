@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <form action="/empresa/editar/{{ empresa.id }}" class="container" method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Nome</label>
+                <input type="text" name="nome" id="nome"  class="form-control" value="{{ empresa.nome }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Cnpj</label>
+                <input type="text" name="cnpj" id="cnpj"  class="form-control"value="{{ empresa.cnpj }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Endereço</label>
+                <input type="text" name="endereco" id="endereco" class="form-control" value="{{ empresa.endereco }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label class="form-check-label">Status</label>
+                <select required name="status" class="form-control">
+                    <option value="A" {% if empresa.status == "A" %}selected{% endif %}>Ativo</option>
+                    <option value="I" {% if empresa.status == "I" %}selected{% endif %}>Inativo</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row col-md-4">
+            <button type="submit" class="btn btn btn-success">
+                <span class="glyphicon glyphicon-ok"aria-hidden="true"></span> Salvar</button>
+            <button onclick="location.href='/empresas'" type="button" class="btn btn btn-warning">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                <a style="text-decoration: none; color: inherit;"> Voltar</a>
+            </button>
+        </div>
+    </form>
+{% endblock %}

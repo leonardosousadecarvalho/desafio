@@ -1,0 +1,56 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Nome</label>
+                <input type="text" name="nome" class="form-control" readonly disabled value="{{ empresa.nome }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Cpf</label>
+                <input type="text" name="cnpj" class="form-control" readonly disabled value="{{ empresa.cnpj }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label">Endereço</label>
+                <input type="text" name="endereco" class="form-control" readonly disabled value="{{ empresa.endereco }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label class="form-check-label">Status</label>
+                <select required name="status" readonly disabled class="form-control">
+                    <option value="A" {% if empresa.status == "A" %}selected{% endif %}>Ativo</option>
+                    <option value="I" {% if empresa.status == "I" %}selected{% endif %}>Inativo</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row list-group">
+                    <div class="col-xs-4">
+                        <h3>Usuarios</h3>
+                        <br>
+                        <ul>
+                            {% for usuario in empresa.usuarios %}
+                                <li style="text-align: left; list-style: circle;">{{ usuario.nome }}</li>    
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button onclick="location.href='/empresas'" type="button" class="btn btn btn-warning">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            <a style="text-decoration: none; color: inherit;"> Voltar</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

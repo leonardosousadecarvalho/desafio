@@ -1,0 +1,41 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 table-responsive">
+                <table class="table table-bordered table-striped">
+                    <button onclick="location.href='/usuario/cadastrar'" type="button" class="pull-right btn btn-secondary">
+                        <span class="glyphicon glyphicon-plus"></span>
+                        <a style="text-decoration: none; color: inherit;" href="/usuario/cadastrar">Cadastrar</a>
+                    </button>
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>CPF</th>
+                            <th>Sexo</th>
+                            <th>Opções</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for u in usuarios %}
+                        <tr>
+                            <td>{{ u.nome }}</td>
+                            <td>{{ u.cpf }}</td>
+                            <td>{{ u.getSexo() }}</td>
+                            <td>
+                                <a href="/usuario/visualizar/{{u.id}}"><button type="button" class="btn btn-info">
+                                    <span class="glyphicon glyphicon-zoom-in"></span> Visualizar</button></a> 
+                                <a href="/usuario/editar/{{u.id}}"><button type="button" class="btn btn-success">
+                                    <span class="glyphicon glyphicon-pencil"></span> Editar</button></a> 
+                                <button type="button" class="btn btn-danger" onclick="confirmaExclusao('/usuario/deletar/{{u.id}}')">
+                                    <span class="glyphicon glyphicon-trash"></span> Excluir
+                                </button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{%  endblock %}

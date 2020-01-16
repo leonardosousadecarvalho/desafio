@@ -1,0 +1,45 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <form action="/usuario/cadastrar" class="container" method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label">Nome</label>
+                <input required type="text" name="nome" id="nome" placeholder="Digite o nome nesse campo" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label">Cpf</label>
+                <input required type="text" name="cpf" id="cpf" placeholder="Digite o cpf nesse campo" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label">Sexo</label>
+                <select required name="sexo" class="form-control">
+                    <option value="M" >Masculino</option>
+                    <option value="F" >Feminino</option>
+                    <option value="O" >Outros</option>
+                </select>
+            </div>
+        </div>
+        
+        <h3>Empresa</h3>
+        <ul style="list-style: none;" >
+            {% for empresa in listaEmpresa %}
+                <li>
+                    <input type="checkbox" name="empresa" value="{{empresa.id}}"> - {{empresa.nome}}
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="row col-xs-12">
+            <button type="submit" class="btn btn btn-success">
+                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Enviar</button>
+            <button onclick="location.href='/usuarios'" type="submit" class="btn btn btn-warning">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                <a style="text-decoration: none; color: inherit;"> Voltar</a>
+            </button>
+        </div>
+    </form>
+{% endblock %}

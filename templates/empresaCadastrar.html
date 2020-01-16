@@ -1,0 +1,42 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <form action="/empresa/cadastrar" class="container" method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Nome</label>
+                <input required type="text" name="nome" id="nome" placeholder="Digite o nome nesse campo" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Cnpj</label>
+                <input required type="text" name="cnpj" id="cnpj" placeholder="Digite o CNPJ nesse campo" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Endereço</label>
+                <input required type="text" name="endereco" id="endereco" placeholder="Digite o endereço nesse campo" class="form-control">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <label class="form-check-label">Status</label>
+                <select required name="status" class="form-control">
+                    <option value="A">Ativo</option>
+                    <option value="I">Inativo</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row col-xs-4">
+            <button onclick="location.href='/empresa/cadastrar'"type="submit" class="btn btn btn-success">
+                <span class="glyphicon glyphicon-ok"aria-hidden="true"></span> Enviar</button>
+            <button onclick="location.href='/empresas'" type="submit" class="btn btn btn-warning">
+                <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                <a style="text-decoration: none; color: inherit;"> Voltar</a>
+            </button>
+        </div>
+    </form>
+{% endblock %}

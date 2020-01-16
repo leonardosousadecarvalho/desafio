@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+{% block conteudo %}
+    <br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Nome</label>
+                <input type="text" name="nome" id="nome" class="form-control" readonly disabled value="{{ usuario.nome }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-check-label">Cpf</label>
+                <input type="text" name="cpf" id="nome" class="form-control" readonly disabled value="{{ usuario.cpf }}">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label class="form-label">Sexo</label>
+                <select required name="sexo" class="form-control" readonly disabled>
+                    <option value="M" {% if usuario.sexo == "M" %}selected{% endif %}>Masculino</option>
+                    <option value="F" {% if usuario.sexo == "F" %}selected{% endif %}>Feminino</option>
+                    <option value="O" {% if usuario.sexo == "O" %}selected{% endif %}>Outros</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row list-group">
+                    <div class="col-xs-4">
+                        <h3>Empresas</h3>
+                        <br>
+                        <ul>
+                            {% for empresa in usuario.empresas %}
+                                <li style="text-align: left; list-style: circle;">{{ empresa.nome }}</li>    
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12">
+                        <button onclick="location.href='/usuarios'" type="button" class="btn btn btn-warning">
+                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
+                            <a style="text-decoration: none; color: inherit;"> Voltar</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
