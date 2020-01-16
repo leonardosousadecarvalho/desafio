@@ -27,5 +27,5 @@ DB_PASS =  'passwd'
 DB_HOST = '127.0.0.1'
 DATABASE = 'desafio'
 ``` 
-No arquivo mysql.dump está contido a estrutura da base
+No arquivo mysql.dump está contido a estrutura da base.
 *Não é necessário fazer o dump pois o SQLAlchemy já cria as estruturas a partir do Model ao iniciar a applicação*
