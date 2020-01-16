@@ -15,6 +15,7 @@ Desenvolvimento de aplicação web com Flask
 
 - Instalar as depenências com o comando `pip install -r requirements.txt`
 - Subir banco de dados com o comando do `docker docker-compose up -d`
+- Para visualizar o banco de dados basta acessar `localhost:8080` no browser e fazer o login com username: `root`, password: `passwd` e database `desafio`
 - Rodar a aplicação com o comando `python app.py`
 
 ## Como configurar o projeto
